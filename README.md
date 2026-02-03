@@ -60,6 +60,38 @@ openclaw gateway --port 18789 --bind lan
 
 > ⚠️ **Important:** You must use `--bind lan` (or set `gateway.bind: "lan"` in your `openclaw.json`) for the gateway to be accessible from the host machine. The default `loopback` binding only allows connections from inside the container. You can also change this setting interactively by running `openclaw config`.
 
+### 5. Pair your host machine
+
+When connecting to OpenClaw from your host machine (via WebChat, macOS app, or mobile nodes), you need to pair the device for security.
+
+1. Open the WebChat UI at **http://localhost:18789**
+2. You will most likely see an error due to a pairing issue between the container and host machine
+3. Inside the container, list pending device pairing requests:
+
+```bash
+openclaw devices list
+```
+
+4. Approve the device:
+
+```bash
+openclaw devices pair <device-id>
+```
+
+Or approve all pending devices:
+
+```bash
+openclaw devices pair --all
+```
+
+To remove a paired device:
+
+```bash
+openclaw devices remove <device-id>
+```
+
+See the [OpenClaw Gateway Pairing Docs](https://docs.openclaw.ai/gateway/pairing) for more details.
+
 Once running, access the OpenClaw web UI at: **http://localhost:18789** or **http://127.0.0.1:18789**
 
 ## Container Management
