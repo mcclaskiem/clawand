@@ -1,5 +1,5 @@
 # OpenClaw container for Apple Containers
-# Run with: container run -t -i --memory 4g --cpus 8 --name clawand clawand:latest
+# Run with: container run -t -i --memory 4g --cpus 8 --name agent agent:latest
 
 FROM ubuntu:resolute-20260106.1
 
@@ -11,19 +11,19 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# Create clawand user with home directory
-RUN useradd -m -s /bin/bash clawand
+# Create agent user with home directory
+RUN useradd -m -s /bin/bash agent
 
 # Create .openclaw directory for volume mount
-RUN mkdir -p /home/clawand/.openclaw \
-    && chown -R clawand:clawand /home/clawand
+RUN mkdir -p /home/agent/.openclaw \
+    && chown -R agent:agent /home/agent
 
-# Switch to clawand user
-USER clawand
-WORKDIR /home/clawand
+# Switch to agent user
+USER agent
+WORKDIR /home/agent
 
 # Install nvm
-ENV NVM_DIR=/home/clawand/.nvm
+ENV NVM_DIR=/home/agent/.nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
 # Install Node.js 24 using nvm
