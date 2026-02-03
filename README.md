@@ -2,6 +2,27 @@
 
 Run [OpenClaw](https://github.com/openclaw/openclaw) — a personal AI assistant — inside a lightweight Linux container on your Mac using [Apple Containers](https://github.com/apple/container).
 
+## Why Apple Containers?
+
+Apple Containers offers a fundamentally different approach to running Linux containers on macOS compared to Docker:
+
+| Feature | Docker for Mac | Apple Containers |
+|---------|---------------|------------------|
+| **Architecture** | Single shared Linux VM for all containers | One lightweight VM per container |
+| **Isolation** | Containers share a kernel inside the VM | Each container gets its own isolated VM |
+| **Resource Usage** | Constant footprint (VM always running) | Zero idle resources — VMs start on-demand |
+| **Startup Time** | Fast after VM boot | Sub-second container startup |
+| **Networking** | Port forwarding required | Dedicated IP per container — no port mapping needed |
+| **File System** | `osxfs` with I/O latency issues | Native EXT4 block devices |
+
+**Key benefits of Apple Containers:**
+- **Better security** — each container is fully isolated in its own micro-VM
+- **Lower overhead** — no background VM consuming resources when idle
+- **Native macOS integration** — built with Swift, uses Virtualization.framework
+- **Cleaner networking** — dedicated IPs eliminate port conflict headaches
+
+> 📖 For a deeper comparison, see: [Apple Native Containers vs Docker: A Game-Changer or Just Hype?](https://medium.com/@dileepapraveen32/apple-native-containers-vs-docker-a-game-changer-or-just-hype-dbab18a675b3)
+
 ## Requirements
 
 - Mac with Apple Silicon
