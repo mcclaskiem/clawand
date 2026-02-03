@@ -55,10 +55,12 @@ openclaw onboard
 Or start the gateway directly:
 
 ```bash
-openclaw gateway --port 18789
+openclaw gateway --port 18789 --bind lan
 ```
 
-Once running, access the OpenClaw web UI at: **http://localhost:18789**
+> ⚠️ **Important:** You must use `--bind lan` (or set `gateway.bind: "lan"` in your `openclaw.json`) for the gateway to be accessible from the host machine. The default `loopback` binding only allows connections from inside the container. You can also change this setting interactively by running `openclaw config`.
+
+Once running, access the OpenClaw web UI at: **http://localhost:18789** or **http://127.0.0.1:18789**
 
 ## Container Management
 
