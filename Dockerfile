@@ -33,6 +33,8 @@ RUN . "$NVM_DIR/nvm.sh" && nvm install 24 && nvm use 24 && nvm alias default 24
 RUN echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc \
     && echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.bashrc
 
+ENV OPENCLAW_HOME=/home/agent/.openclaw
+
 # Install OpenClaw using the official installer
 RUN . "$NVM_DIR/nvm.sh" && curl -fsSL https://openclaw.ai/install.sh | bash -s -- --no-onboard
 
