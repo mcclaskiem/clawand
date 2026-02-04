@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     gnupg \
     git \
+    python3 \
+    python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
 # Create agent user with home directory
